@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   match 'about', to: 'pages#about', via: :get
   match 'contact', to: 'pages#contact', via: :get
 
+  resources :projects
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
