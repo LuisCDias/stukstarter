@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
+  root 'projects#index'
   match 'about', to: 'pages#about', via: :get
   match 'contact', to: 'pages#contact', via: :get
 

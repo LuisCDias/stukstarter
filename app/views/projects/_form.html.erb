@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= simple_form_for(@project, html: { class: 'form-horizontal' }) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -10,8 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <%= f.input :name %>
+  <%= f.input :short_description %>
+  <%= f.input :description %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>
