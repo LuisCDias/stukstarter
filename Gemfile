@@ -28,7 +28,9 @@ gem 'devise'
 gem 'simple_form'
 # Annotate model fields
 gem 'annotate'
-# Datepicker for simple form
+# Date validator
+gem 'date_validator'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
