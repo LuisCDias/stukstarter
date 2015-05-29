@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # Static pages
   get 'pages/home'
   get 'pages/about'
@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   match 'about', to: 'pages#about', via: :get
   match 'contact', to: 'pages#contact', via: :get
 
-  resources :projects
+  # Projects and project rewards resources
+  resources :projects do
+    resources :rewards, only: [:new, :create, :edit, :update, :destroy]
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -13,6 +13,8 @@
 #
 
 class Reward < ActiveRecord::Base
+
+	belongs_to :project
 	has_many :user_pledges
 	has_many :backers, through: :user_pledges, source: :user
 end
