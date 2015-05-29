@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: rewards
+#
+#  id                 :integer          not null, primary key
+#  name               :string
+#  description        :text
+#  value              :integer
+#  number_available   :integer
+#  estimated_delivery :date
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  value: 1
+  number_available: 1
+  estimated_delivery: 2015-05-29
+
+two:
+  name: MyString
+  description: MyText
+  value: 1
+  number_available: 1
+  estimated_delivery: 2015-05-29

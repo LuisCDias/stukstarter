@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528162031) do
+ActiveRecord::Schema.define(version: 20150529143815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,26 @@ ActiveRecord::Schema.define(version: 20150528162031) do
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+
+  create_table "rewards", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "value"
+    t.integer  "number_available"
+    t.date     "estimated_delivery"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "user_pledges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reward_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_pledges", ["reward_id"], name: "index_user_pledges_on_reward_id", using: :btree
+  add_index "user_pledges", ["user_id"], name: "index_user_pledges_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -49,4 +69,6 @@ ActiveRecord::Schema.define(version: 20150528162031) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "projects", "users"
+  add_foreign_key "user_pledges", "rewards"
+  add_foreign_key "user_pledges", "users"
 end
