@@ -30,6 +30,10 @@ gem 'simple_form'
 gem 'annotate'
 # Date validator
 gem 'date_validator'
+# Datetimepicker and Font-awesome
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'font-awesome-sass', '~> 4.3.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
