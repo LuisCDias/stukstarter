@@ -5,6 +5,9 @@ class RewardsController < ApplicationController
 
   def new
     @reward = @project.rewards.build
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
@@ -19,6 +22,9 @@ class RewardsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+    end
   end
 
   def update
@@ -49,6 +55,6 @@ class RewardsController < ApplicationController
   end
 
   def reward_params
-    params.require(:reward).permit(:name, :description, :value, :number_available, :estimated_delivery)
+    params.require(:reward).permit(:name, :description, :value, :shipping, :number_available, :estimated_delivery)
   end
 end

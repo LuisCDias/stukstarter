@@ -12,6 +12,7 @@
 #  status            :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  goal              :decimal(8, 2)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601144411) do
+ActiveRecord::Schema.define(version: 20150601165017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_pledge_id"
+    t.integer  "amount"
+    t.decimal  "shipping"
+    t.date     "expiration_date"
+    t.integer  "number"
+    t.string   "uuid"
+    t.string   "token"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "postal_code"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "orders", ["user_pledge_id"], name: "index_orders_on_user_pledge_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -37,9 +56,10 @@ ActiveRecord::Schema.define(version: 20150601144411) do
     t.integer  "value"
     t.integer  "number_available"
     t.date     "estimated_delivery"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "project_id"
+    t.decimal  "shipping",           precision: 8, scale: 2
   end
 
   add_index "rewards", ["project_id"], name: "index_rewards_on_project_id", using: :btree
@@ -72,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150601144411) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "orders", "user_pledges"
   add_foreign_key "projects", "users"
   add_foreign_key "rewards", "projects"
   add_foreign_key "user_pledges", "rewards"

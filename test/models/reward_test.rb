@@ -10,6 +10,8 @@
 #  estimated_delivery :date
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  project_id         :integer
+#  shipping           :decimal(8, 2)
 #
 
 require 'test_helper'
