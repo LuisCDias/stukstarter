@@ -17,17 +17,17 @@
 class Project < ActiveRecord::Base
   
 	belongs_to :user
-  	has_many :rewards 
+	has_many :rewards 
 
-  	validates :name, :short_description, :description, :image_url, :expiration_date, :status, presence: true
-  	validates :status, inclusion: { in: %w(ongoing funded expired), message: "%{value} is not a valid status" }
+	validates :name, :short_description, :description, :image_url, :expiration_date, :status, presence: true
+	validates :status, inclusion: { in: %w(ongoing funded expired), message: "%{value} is not a valid status" }
 
-  	before_validation :start_project, :on => :create
+	before_validation :start_project, :on => :create
 
-  	private
+	private
 
-  	def start_project
-  		self.status = "ongoing"
-  		self.expiration_date = 1.month.from_now
-  	end
+	def start_project
+		self.status = "ongoing"
+		self.expiration_date = 1.month.from_now
+	end
 end

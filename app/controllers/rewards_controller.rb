@@ -1,4 +1,5 @@
 class RewardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project
   before_action :set_reward, except: [:new, :create]
 
@@ -33,7 +34,7 @@ class RewardsController < ApplicationController
   def destroy
     @reward.destroy
     respond_to do |format|
-      format.html { redirect_to projects_path, notice: 'Reward was successfully destroyed.' }
+      format.html { redirect_to project_path(@project), notice: 'Reward was successfully destroyed.' }
     end
   end
 
