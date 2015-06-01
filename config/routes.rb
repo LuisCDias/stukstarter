@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   # Projects and project rewards resources
   resources :projects do
     resources :rewards, only: [:new, :create, :edit, :update, :destroy]
+    resources :orders, only: [:index] do
+      collection do
+        get :checkout
+      end
+    end
   end
 
 

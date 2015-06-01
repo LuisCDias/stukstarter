@@ -3,9 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .reward{
-	background: #eee;
-	border: solid 1px;
-	padding: 10px;
+	div{
+		background: #eee;
+		border: solid 1px;
+		padding: 10px;	
+	}	
+}
+.reward:link, .reward:visited, .reward:hover, .reward:active{
+	color:black;
 }
 
 .project-stats{	
