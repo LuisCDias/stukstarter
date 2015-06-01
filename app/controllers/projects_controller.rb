@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @rewards = @project.rewards
+    @days_to_go = (@project.expiration_date - Date.today).to_i
   end
 
   # GET /projects/new
@@ -71,6 +72,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name,:short_description,:description,:image_url,:expiration_date)
+      params.require(:project).permit(:name,:short_description,:description,:goal,:image_url,:expiration_date)
     end
 end

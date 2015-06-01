@@ -4,5 +4,18 @@
 
 .reward{
 	background: #eee;
-	border: solid 1px ;
+	border: solid 1px;
+	padding: 10px;
+}
+
+.project-stats{	
+	margin-bottom: 40px;
+	.val{
+		font-size: 40px;
+		font-weight: bold;		
+	}	
+	
+	.lab{		
+		font-size: 18px;	
+	}
 }

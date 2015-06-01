@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	has_many :rewards 
 
-	validates :name, :short_description, :description, :image_url, :expiration_date, :status, presence: true
+	validates :name, :short_description, :description, :image_url, :expiration_date, :status, :goal, presence: true
 	validates :status, inclusion: { in: %w(ongoing funded expired), message: "%{value} is not a valid status" }
 
 	before_validation :start_project, :on => :create

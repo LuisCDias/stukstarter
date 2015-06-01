@@ -1,0 +1,14 @@
+<div class="project-stats">
+	<div class="val">
+		662
+	</div>
+	<span class="lab">backers</span><br>
+	<div class="val">
+		<%= number_to_currency(29000, unit: "$", precision: 0) %>
+	</div>
+	<span class="lab">pledge of <%= number_to_currency(project.goal, unit: "$", precision: 0) %> goal</span><br>
+	<div class="val">
+		<%= days_to_go %>
+	</div>
+	<span class="lab">days to go</span><br>
+</div>
