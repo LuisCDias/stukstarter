@@ -1,0 +1,16 @@
+<div class="col-md-8">
+	<%= simple_form_for @pledge, url: checkout_project_pledges_path(@project), method: :get do |f| %>	
+		<h1>Let's do it!</h1>
+		<fieldset>
+			<%= f.input :amount, label: "Enter your pledge amount:", input_html: {value: @reward.try(:value), required: true} %>
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend>Select your reward</legend>
+			<%= f.collection_radio_buttons(:reward, @rewards, :id, :name, :checked => @reward.try(:id)) do |b| %>
+				<% b.label(:"data-value" => b.value) { b.radio_button + pledge_radio_description(b.object) } %>
+			<% end %>
+		</fieldset>
+		<%= f.submit "Continue to next step", class: "btn btn-success btn-lg" %>
+	<% end %>
+</div>
