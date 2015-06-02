@@ -4,7 +4,7 @@
 		<%= link_to 'Delete', project_reward_path(@project,reward), method: :delete, data: {confirm: "Are you sure?"} %>
 	</div>
 <% end %>
-<%= link_to checkout_project_orders_path(@project,reward: reward.id), class: "reward" do %>
+<%= link_to new_project_order_path(@project,reward: reward.id), class: "reward" do %>
 	<div>
 		<p><strong>Pledge $<%= reward.value %> or more</strong></p>
 		<p class="backers"><strong>3 backers</strong></p><br>
