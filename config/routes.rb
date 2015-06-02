@@ -22,9 +22,8 @@ Rails.application.routes.draw do
         get :checkout
       end
     end
-  end
-
-  resources :payments, only: [:new,:create]
+    resources :payments, only: [:new,:create]
+  end  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
