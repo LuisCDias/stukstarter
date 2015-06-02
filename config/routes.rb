@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'payments/new'
-
-  get 'payments/create'
-
   # Static pages
   get 'pages/home'
   get 'pages/about'
@@ -21,13 +17,14 @@ Rails.application.routes.draw do
   # Projects and project rewards resources
   resources :projects do
     resources :rewards, only: [:new, :create, :edit, :update, :destroy]
-    resources :orders, only: [:index,:new] do
+    resources :pledges, only: [:index,:new] do
       collection do
         get :checkout
       end
     end
   end
 
+  resources :payments, only: [:new,:create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
