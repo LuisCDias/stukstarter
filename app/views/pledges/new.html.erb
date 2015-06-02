@@ -1,5 +1,5 @@
 <div class="col-md-8">
-	<%= simple_form_for @pledge, url: checkout_project_orders_path(@project), method: :get do |f| %>	
+	<%= simple_form_for @pledge, url: checkout_project_pledges_path(@project), method: :get do |f| %>	
 		<h1>Let's do it!</h1>
 		<fieldset>
 			<%= f.input :amount, label: "Enter your pledge amount:" %>

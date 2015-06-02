@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class PledgesController < ApplicationController
 	before_action :authenticate_user!
   	before_action :set_project
 
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   	def checkout
   		@reward = @project.rewards.find_by_name(order_params[:reward])
-  		@pledge = current_user.user_pledges.build(reward:@reward, amount:)
+  		#@pledge = current_user.user_pledges.build(reward:@reward, amount:)
   	end
 
   	private
