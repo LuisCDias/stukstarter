@@ -28,17 +28,22 @@ class PaymentsController < ApplicationController
     
     respond_to do |format|
       if @pledge.valid?
-        @pledge.save
-        result = Braintree::Customer.create( 
-          :email => current_user.email, 
-          :payment_method_nonce => params[:payment_method_nonce] 
-        )
-        if result.success?
-          current_user.update(customer_id: result.customer.id)
-          format.html { redirect_to project_pledge_path(@project,@pledge), notice: "Your pledge was successfully created." }
+        if Braintree::Customer.find(current_user.customer_id)
+          @pledge.save
+          format.html { redirect_to project_pledges_path(@project), notice: "Your pledge was successfully created." }
         else
-          flash.now[:error] = result.errors.map(&:message)
-          format.html {render :new }
+          result = Braintree::Customer.create( 
+            :email => current_user.email, 
+            :payment_method_nonce => params[:payment_method_nonce] 
+          )
+          if result.success?
+            @pledge.save
+            current_user.update(customer_id: result.customer.id)
+            format.html { redirect_to project_pledges_path(@project), notice: "Your pledge was successfully created." }
+          else
+            flash.now[:error] = result.errors.map(&:message)
+            format.html {render :new }
+          end        
         end        
       else
         flash.now[:error] = "Pledge is invalid"

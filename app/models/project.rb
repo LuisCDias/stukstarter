@@ -13,6 +13,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  goal              :decimal(8, 2)
+#  slug              :string
 #
 
 class Project < ActiveRecord::Base
