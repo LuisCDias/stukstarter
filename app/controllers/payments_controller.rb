@@ -28,7 +28,7 @@ class PaymentsController < ApplicationController
     
     respond_to do |format|
       if @pledge.valid?
-        if Braintree::Customer.find(current_user.customer_id)
+        if current_user.customer_id && Braintree::Customer.find(current_user.customer_id)
           @pledge.save
           format.html { redirect_to project_pledges_path(@project), notice: "Your pledge was successfully created." }
         else

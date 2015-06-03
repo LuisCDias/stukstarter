@@ -32,6 +32,27 @@ class Project < ActiveRecord::Base
 		rewards.flat_map(&:user_pledges).map(&:amount).inject(0, :+)
 	end
 
+	def fund
+		if self.funded?
+			rewards.flat_map(&:user_pledges).each do |pledge|
+				
+
+			end
+		end
+	end
+
+	def funded?
+		status == "funded"
+	end
+
+	def expired?
+		status == "expired"
+	end
+
+	def canceled?
+		status == "canceled"
+	end
+
 	private
 
 	def start_project

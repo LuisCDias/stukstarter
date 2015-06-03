@@ -30,6 +30,22 @@ class UserPledge < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   validates_presence_of :name, :address, :city, :country, :postal_code, :amount, :user_id
   
+  def charge
+    return false unless self.reward.project.funded?
+    id = user.customer_id
+    if id && @customer = Braintree::Customer.find(id)
+      result = Braintree::Transaction.sale(
+        :customer_id => @customer.id
+        :amount => self.amount
+      )
+      if result.success?
+        # Send email to Customer informing that the shipment is ongoing
+      else
+        # Send email to Customer informing that the payment has failed
+      end
+    end
+  end
+
   private
 
   def generate_uuid!
