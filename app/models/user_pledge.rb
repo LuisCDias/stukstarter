@@ -21,11 +21,14 @@
 #
 
 class UserPledge < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :uuid
+
   belongs_to :user
   belongs_to :reward
 
   before_validation :generate_uuid!, :on => :create
-  validates_presence_of :name, :amount, :user_id
+  validates_presence_of :name, :address, :city, :country, :postal_code, :amount, :user_id
   
   private
 

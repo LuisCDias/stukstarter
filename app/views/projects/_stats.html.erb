@@ -1,10 +1,10 @@
 <div class="project-stats">
 	<div class="val">
-		662
+		<%= link_to @pledges.count, project_pledges_path(@project) %>
 	</div>
 	<span class="lab">backers</span><br>
 	<div class="val">
-		<%= number_to_currency(29000, unit: "$", precision: 0) %>
+		<%= number_to_currency(@project.total_backed_amount, unit: "$", precision: 0) %>
 	</div>
 	<span class="lab">pledge of <%= number_to_currency(project.goal, unit: "$", precision: 0) %> goal</span><br>
 	<div class="val">

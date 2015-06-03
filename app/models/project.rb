@@ -16,7 +16,9 @@
 #
 
 class Project < ActiveRecord::Base
-  
+  	extend FriendlyId
+  	friendly_id :slug_candidates, use: :slugged
+	
 	belongs_to :user
 	has_many :rewards 
 
@@ -25,10 +27,21 @@ class Project < ActiveRecord::Base
 
 	before_validation :start_project, :on => :create
 
+	def total_backed_amount
+		rewards.flat_map(&:user_pledges).map(&:amount).inject(0, :+)
+	end
+
 	private
 
 	def start_project
 		self.status = "ongoing"
 		self.expiration_date = 1.month.from_now
 	end
+
+	def slug_candidates
+    [
+      :name,
+      [:name, :created_at]
+    ]
+  end
 end

@@ -38,6 +38,8 @@ gem 'font-awesome-sass', '~> 4.3.0'
 gem 'cancancan', '~> 1.10'
 # Braintree for later charges
 gem 'braintree'
+# Friendly ID
+gem 'friendly_id', '~> 5.1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

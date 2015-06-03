@@ -7,7 +7,7 @@
 		<br>
 		<fieldset>
 			<legend>Select your reward</legend>
-			<%= f.collection_radio_buttons(:reward, @rewards, :id, :name, :checked => @reward.try(:id)) do |b| %>
+			<%= f.collection_radio_buttons(:reward_id, @rewards, :id, :name, :checked => @reward.try(:id)) do |b| %>
 				<% b.label(:"data-value" => b.value) { b.radio_button + pledge_radio_description(b.object) } %>
 			<% end %>
 		</fieldset>
