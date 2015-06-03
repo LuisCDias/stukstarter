@@ -36,6 +36,8 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 gem 'font-awesome-sass', '~> 4.3.0'
 # Cancancan for authorization
 gem 'cancancan', '~> 1.10'
+# Braintree for later charges
+gem 'braintree'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,6 +57,9 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  # Load environment variables from .env in development
+  gem 'dotenv-rails'
 end
 
 group :production do
