@@ -1,7 +1,11 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datetimepicker.min";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "rewards";
+@import "settings";
+@import "navbar";
+@import "project";

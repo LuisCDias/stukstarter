@@ -7,12 +7,11 @@
   <%= csrf_meta_tags %>
   <!-- Braintree JS -->
   <script type="text/javascript" src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  <%= favicon_link_tag 'favicon.png' %>
 </head>
 <body>	
 	<%= render 'general/header' %>	
-	<div class="container">
 		<%= flash_messages %>
 		<%= yield %>		
-	</div>
 </body>
 </html>

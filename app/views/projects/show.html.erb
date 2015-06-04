@@ -1,41 +1,48 @@
-<div class="row">
-	<div class="col-md-12 text-center">
-		<h2><%= @project.name %></h2>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-8">
-		<%= link_to image_tag(@project.image_url, alt: @project.name, width: '100%'), project_path(@project) %>
-	</div>
-	<div class="col-md-4">
-		<% if can? :manage, @project %>
-			<div id="project-mgmt">
-				<%= link_to 'Edit', edit_project_path(@project) %> | 
-				<%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<div class="project-intro">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2 class="project-title"><%= @project.name %></h2>
 			</div>
-		<% end %>
-		<%= render "stats", project: @project, days_to_go: @days_to_go %>
-		<%= render "pledge_form", project: @project %>		
-		<br><br><p><%= funding_status_message @project %></p>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<%= link_to image_tag(@project.image_url, alt: @project.name, width: '100%'), project_path(@project) %>
+			</div>
+			<div class="col-md-4">
+				<% if can? :manage, @project %>
+					<div id="project-mgmt">
+						<%= link_to 'Edit', edit_project_path(@project) %> | 
+						<%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure?"} %>
+					</div>
+				<% end %>
+				<%= render "stats", project: @project, days_to_go: @days_to_go %>
+				<%= render "pledge_form", project: @project %>		
+				<p class="project-time"><%= funding_status_message @project %></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-8">
+				<p class="project-small-description"><%= @project.short_description %></p>
+			</div>	
+		</div>
 	</div>
 </div>
-<br>
-<div class="row">
-	<div class="col-md-8">
-		<p><%= @project.short_description %></p>
-	</div>	
-</div>
-<hr>
-<div class="row">
-	<div class="col-md-8">
-		<h3>About this Project</h3><br>
-		<p><%= @project.description %></p>
-	</div>	
-	<div class="col-md-4">
-		<h3>Rewards</h3>
-		<p><%= render @rewards %></p>
-		<% if can? :manage, @project.rewards.build %>
-			<%= link_to "Add Reward", new_project_reward_path(@project), class: "btn btn-primary" %>
-		<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h3 class="project-subtitle">About this Project</h3><br>
+			<p><%= @project.description %></p>
+		</div>	
+		<div class="col-md-4">
+			<h3 class="project-subtitle">Rewards</h3>
+			<p><%= render @rewards %></p>
+			<% if can? :manage, @project.rewards.build %>
+				<%= link_to "Add Reward", new_project_reward_path(@project), class: "btn btn-primary" %>
+			<% end %>
+		</div>
 	</div>
 </div>
