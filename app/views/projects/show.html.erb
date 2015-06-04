@@ -15,7 +15,8 @@
 			</div>
 		<% end %>
 		<%= render "stats", project: @project, days_to_go: @days_to_go %>
-		<%= render "pledge_form", project: @project %>
+		<%= render "pledge_form", project: @project %>		
+		<br><br><p><%= funding_status_message @project %></p>
 	</div>
 </div>
 <br>

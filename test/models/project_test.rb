@@ -9,7 +9,7 @@
 #  description       :text
 #  image_url         :string
 #  expiration_date   :date
-#  status            :string
+#  status            :string           default("pending")
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  goal              :decimal(8, 2)

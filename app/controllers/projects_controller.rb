@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @rewards = @project.rewards
-    @days_to_go = (@project.expiration_date - Date.today).to_i
+    @days_to_go = (@project.expiration_date.to_date - Date.today).to_i
   end
 
   # GET /projects/new

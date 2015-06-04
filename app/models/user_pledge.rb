@@ -18,6 +18,7 @@
 #  city            :string
 #  country         :string
 #  postal_code     :string
+#  status          :string           default("pending")
 #
 
 class UserPledge < ActiveRecord::Base
@@ -30,20 +31,34 @@ class UserPledge < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   validates_presence_of :name, :address, :city, :country, :postal_code, :amount, :user_id
   
-  def charge
-    return false unless self.reward.project.funded?
+  def charge!
+    return false unless self.reward.project.funded? && !self.charged?
     id = user.customer_id
     if id && @customer = Braintree::Customer.find(id)
       result = Braintree::Transaction.sale(
-        :customer_id => @customer.id
+        :customer_id => @customer.id,
         :amount => self.amount
       )
       if result.success?
+        update(status: "charged")
         # Send email to Customer informing that the shipment is ongoing
       else
+        update(status: "failed")
         # Send email to Customer informing that the payment has failed
       end
     end
+  end
+
+  def charged?
+    status == "charged"
+  end
+
+  def failed?
+    status == "failed"
+  end
+
+  def pending?
+    status == "pending"
   end
 
   private

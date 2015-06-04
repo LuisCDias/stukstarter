@@ -18,6 +18,7 @@
 #  city            :string
 #  country         :string
 #  postal_code     :string
+#  status          :string           default("pending")
 #
 
 require 'test_helper'

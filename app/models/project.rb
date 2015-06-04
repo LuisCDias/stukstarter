@@ -9,7 +9,7 @@
 #  description       :text
 #  image_url         :string
 #  expiration_date   :date
-#  status            :string
+#  status            :string           default("pending")
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  goal              :decimal(8, 2)
@@ -23,21 +23,17 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	has_many :rewards 
 
-	validates :name, :short_description, :description, :image_url, :expiration_date, :status, :goal, presence: true
-	validates :status, inclusion: { in: %w(ongoing funded expired), message: "%{value} is not a valid status" }
+	validates :name, :short_description, :description, :image_url, :expiration_date, :goal, presence: true
+	#validates :status, inclusion: { in: %w(pending funded expired canceled), message: "%{value} is not a valid status" }
 
 	before_validation :start_project, :on => :create
 
-	def total_backed_amount
-		rewards.flat_map(&:user_pledges).map(&:amount).inject(0, :+)
+	def pledges
+		rewards.flat_map(&:user_pledges)
 	end
 
-	def fund
-		if self.funded?
-			rewards.flat_map(&:user_pledges).each do |pledge|
-								
-			end
-		end
+	def total_backed_amount
+		pledges.map(&:amount).inject(0, :+)
 	end
 
 	def funded?
@@ -55,8 +51,8 @@ class Project < ActiveRecord::Base
 	private
 
 	def start_project
-		self.status = "ongoing"
 		self.expiration_date = 1.month.from_now
+		ChargePledgesJob.set(wait_until: self.expiration_date).perform_later self.id
 	end
 
 	def slug_candidates
