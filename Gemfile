@@ -40,6 +40,10 @@ gem 'cancancan', '~> 1.10'
 gem 'braintree'
 # Friendly ID
 gem 'friendly_id', '~> 5.1.0'
+# Delayed Job to Charge funded projects
+gem 'delayed_job', '~> 4.0.6'
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

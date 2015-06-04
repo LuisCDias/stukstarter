@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :payments, only: [:new,:create]
   end  
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
