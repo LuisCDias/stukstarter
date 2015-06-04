@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603152631) do
+ActiveRecord::Schema.define(version: 20150604091748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20150603152631) do
     t.text     "description"
     t.string   "image_url"
     t.date     "expiration_date"
-    t.string   "status"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.string   "status",                                    default: "pending"
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
     t.decimal  "goal",              precision: 8, scale: 2
     t.string   "slug"
   end
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20150603152631) do
   create_table "user_pledges", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "reward_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.integer  "amount"
     t.decimal  "shipping",        precision: 8, scale: 2
     t.date     "expiration_date"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150603152631) do
     t.string   "city"
     t.string   "country"
     t.string   "postal_code"
+    t.string   "status",                                  default: "pending"
   end
 
   add_index "user_pledges", ["reward_id"], name: "index_user_pledges_on_reward_id", using: :btree

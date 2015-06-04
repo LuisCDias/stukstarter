@@ -35,8 +35,7 @@ class Project < ActiveRecord::Base
 	def fund
 		if self.funded?
 			rewards.flat_map(&:user_pledges).each do |pledge|
-				
-
+								
 			end
 		end
 	end
