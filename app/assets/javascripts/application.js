@@ -16,5 +16,6 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require bootstrap-wysihtml5
 //= require turbolinks
 //= require_tree .

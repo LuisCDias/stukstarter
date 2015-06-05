@@ -1,4 +1,7 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+/*
+  *= require bootstrap-wysihtml5
+*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datetimepicker.min";
