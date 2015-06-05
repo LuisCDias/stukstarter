@@ -5,11 +5,14 @@
 	</div>
 <% end %>
 <%= link_to new_project_pledge_path(@project,reward_id: reward.id), class: "reward" do %>
-	<div>
-		<p><strong>Pledge $<%= reward.value %> or more</strong></p>
-		<p class="backers"><strong>3 backers</strong></p><br>
-		<p><%= reward.name %></p><br>
-		<p><%= raw reward.description %></p><br>
-		<p><strong>Estimated delivery:</strong> <%= reward.estimated_delivery %></p>
+	<div class="reward-box">
+		<p class="pledge">Pledge $<%= reward.value %> or more</p>
+		<p class="backers"><span class="primary-color"><i class="fa fa-cog"></i></span> 3 backers</p>
+		<p class="name"><%= reward.name %></p>
+		<p class="description"><%= raw reward.description %></p>
+		<p class="time"><span class="gray">Estimated delivery:</span><br /><%= reward.estimated_delivery %></p>
+		<div class="reward-hover">
+		Select this reward
+		</div>
 	</div>
 <% end %>

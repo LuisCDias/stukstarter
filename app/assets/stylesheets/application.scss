@@ -1,10 +1,13 @@
 /*
   *= require bootstrap-wysihtml5
 */
-
+@import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datetimepicker.min";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "rewards";
+@import "settings";
+@import "navbar";
+@import "project";
