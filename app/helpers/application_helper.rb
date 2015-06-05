@@ -12,4 +12,13 @@ module ApplicationHelper
 	   	end
 	    nil
 	end
+
+	def editor(label,name,id,content)
+		html  = "<div class=\"form-group\">"
+  		html += "<label class=\"string required control-label\" for=\"#{id}\">"
+  		html += "<abbr title=\"required\">*</abbr> #{label}</label>"
+  	   	html += quill_editor(name, {value: content})
+  		html += "</div>"
+  		raw html
+	end
 end
