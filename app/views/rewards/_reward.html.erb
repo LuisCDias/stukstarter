@@ -9,7 +9,7 @@
 		<p><strong>Pledge $<%= reward.value %> or more</strong></p>
 		<p class="backers"><strong>3 backers</strong></p><br>
 		<p><%= reward.name %></p><br>
-		<p><%= reward.description %></p><br>
+		<p><%= raw reward.description %></p><br>
 		<p><strong>Estimated delivery:</strong> <%= reward.estimated_delivery %></p>
 	</div>
 <% end %>

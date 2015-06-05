@@ -44,6 +44,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'delayed_job', '~> 4.0.6'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
+# Quill WYSIWYG
+gem 'quill-rails', '~> 0.1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

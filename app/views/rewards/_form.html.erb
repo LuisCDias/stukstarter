@@ -1,6 +1,6 @@
 <%= simple_form_for([@project,@reward], html: { class: 'form-horizontal' }) do |f| %>
   <%= f.input :name %>
-  <%= f.input :description %>
+  <%= editor 'About this reward', 'reward[description]','reward_description', @reward.try(:description) %>
   <%= f.input :value %>
   <%= f.input :shipping %>
   <%= f.input :number_available %>
