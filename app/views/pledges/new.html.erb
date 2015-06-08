@@ -1,16 +1,28 @@
-<div class="col-md-8">
-	<%= simple_form_for @pledge, url: new_project_payment_path(@project), method: :get do |f| %>	
-		<h1>Let's do it!</h1>
-		<fieldset>
-			<%= f.input :amount, label: "Enter your pledge amount:", input_html: {value: @reward.try(:value), required: true} %>
-		</fieldset>
-		<br>
-		<fieldset>
-			<legend>Select your reward</legend>
-			<%= f.collection_radio_buttons(:reward_id, @rewards, :id, :name, :checked => @reward.try(:id)) do |b| %>
-				<% b.label(:"data-value" => b.value) { b.radio_button + pledge_radio_description(b.object) } %>
-			<% end %>
-		</fieldset>
-		<%= f.submit "Continue to next step", class: "btn btn-success btn-lg" %>
-	<% end %>
+<div class="project-intro">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="project-title text-center"><a href=""><%= @project.name %></a></h2>
+				
+				<div class="pledge-box">
+					<%= simple_form_for @pledge, url: new_project_payment_path(@project), method: :get do |f| %>	
+					<h1>Alrighty!</h1>
+					<h2>Enter your pledge amount</h2>
+					<fieldset>
+						<%= f.input :amount, placeholder: "Enter your pledge amount:", input_html: {value: @reward.try(:value), required: true} %>
+					</fieldset>
+					<br>
+					<fieldset>
+						<legend>Select your reward</legend>
+						<%= f.collection_radio_buttons(:reward_id, @rewards, :id, :name, :checked => @reward.try(:id)) do |b| %>
+						<% b.label(:"data-value" => b.value) { b.radio_button + pledge_radio_description(b.object) } %>
+						<% end %>
+					</fieldset>
+					<%= f.submit "Continue to next step", class: "btn btn-success btn-md pull-right" %>
+					<div class="clearfix"></div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
