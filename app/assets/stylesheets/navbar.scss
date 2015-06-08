@@ -1,5 +1,5 @@
 .nav li a {
-  color: #828587 !important;
+  color: #828587;
   display: inline-block;
   font-size: 14px;
   font-weight: bold;
@@ -13,4 +13,12 @@
 
 .navbar {
   margin-bottom: 0;
+}
+
+.nav-blue a {
+  color: #00a0ff !important;
+}
+
+.nav-blue a:hover {
+  color: #828587 !important;
 }

@@ -22,9 +22,8 @@
             <li><%= link_to "Account", edit_user_registration_path %></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact Us", contact_path %></li>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li class="nav-blue"><a href="">Sign Up</a></li>
+            <li class="nav-blue"><%= link_to "Log In", new_user_session_path %></li>
         <% end %>        
       </ul>
     </div><!-- /.navbar-collapse -->
